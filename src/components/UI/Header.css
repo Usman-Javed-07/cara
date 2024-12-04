@@ -1,0 +1,57 @@
+/* Base Styles */
+.nav-bar {
+    display: flex;
+        justify-content: space-around;
+        padding: 1.2rem;
+        align-items: center;
+        background: #e3e6f3;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-image img {
+    width: 120px;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 0.8rem;
+  }
+
+  .ham-menu {
+    display: none;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+    
+    }
+  
+    .nav-list.show {
+      display: flex;
+    }
+  
+    .ham-menu {
+      display: block;
+    }
+  }
+  
