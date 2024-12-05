@@ -7,26 +7,22 @@ import { GoStarFill } from "react-icons/go";
 
 const Shop = () => {
   const URL = "http://localhost:5000/api/products";
-  const [data, setData] = useState(null); // State to store the fetched data
-
-  // const [inputValue , setInputValue] = useState('')
-  // const [storedValue , setStoredValue] = useState('')
+  const [data, setData] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await fetch(URL);
         const json = await result.json();
-        console.log('Fetched data:', json); // Log the entire response
+        console.log('Fetched data:', json); 
 
-        // Set the data directly since it is not inside a 'data' property
         if (json && Array.isArray(json)) {
-          setData(json); // Store the fetched data in the state
+          setData(json); 
         } else {
-          console.log('Unexpected data format:', json); // Log if the format is unexpected
+          console.log('Unexpected data format:', json); 
         }
       } catch (error) {
-        console.log("Error fetching data:", error); // Handle any fetch errors
+        console.log("Error fetching data:", error); 
       }
     };
 
@@ -34,38 +30,20 @@ const Shop = () => {
   }, []);
 
 
-  // const saveTolocalStorage = (product) => {
-
-  //   if (product) {
-  //     localStorage.setItem("myData", JSON.stringify(product)); // Convert to JSON
-  //     alert("Data saved to localStorage!");
-  //   } else {
-  //     alert("No data to save!");
-  //   }
-  // };
-
-  // // Retrieve data from localStorage on mount
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("myData");
-  //   if (storedData) {
-  //     setData(JSON.parse(storedData)); // Parse JSON back to JavaScript
-  //   }
-  // }, []);
 
   const saveTolocalStorage = (product) => {
     if (product) {
-      // Step 1: Retrieve Existing Data
+      
       const existingData = JSON.parse(localStorage.getItem("myData")) || [];
       console.log("Existing LocalStorage Data:", existingData);
       console.log("Product to Add:", product);
   
-      // Step 2: Optional Duplicate Check
       const isAlreadyInStorage = existingData.some(
-        (item) => item._id === product._id // Update this key if necessary
+        (item) => item._id === product._id 
       );
   
       if (!isAlreadyInStorage) {
-        // Step 3: Add Product and Update LocalStorage
+      
         const updatedData = [...existingData, product];
         localStorage.setItem("myData", JSON.stringify(updatedData));
         console.log("Updated LocalStorage Data:", updatedData);
@@ -77,10 +55,6 @@ const Shop = () => {
       alert("No product to save!");
     }
   };
-  
-  
-
-
   const cardStyle = {
     display: "flex",
     flexDirection: "row", 
@@ -98,7 +72,6 @@ const Shop = () => {
   if(!data) return <h1>Loading</h1>
     return (
         <>
-  
         {/*  */}
             <div className="shop-items">
       <div className="shop-item-data">
@@ -162,7 +135,6 @@ const Shop = () => {
               <GoStarFill />
               <GoStarFill />
               <GoStarFill />
-             
 
               </div>
               <h3 className="price">${product.productPrice}</h3>
@@ -200,6 +172,5 @@ const Shop = () => {
         </>
     )
 }    
-
 
 export default Shop
